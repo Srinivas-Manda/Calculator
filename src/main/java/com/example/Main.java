@@ -4,161 +4,52 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 public class Main {
-    private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        while (true) {
+            System.out.println("Welcome to Scientific Calculator");
+            System.out.println("What would you like to do?");
+            System.out.println("1. Enter 1 to compute Addition");
+            System.out.println("2. Enter 2 to compute Subtraction");
+            System.out.println("3. Enter 3 to compute Multiplication");
+            System.out.println("4. Enter 4 to compute Division");
+            System.out.println("5. Enter 5 to exit the program");
+            System.out.print("Enter your choice: ");
+            Scanner sc = new Scanner(System.in);
+            int choice = sc.nextInt();
+
+            Calculator calcObj = new Calculator();
+
+            if (choice >= 5) {
+                System.out.println("Exiting program...");
+                System.exit(0);
+            } else if (choice == 1) {
+                System.out.print("Enter the First number: ");
+                Double a = sc.nextDouble();
+                System.out.print("Enter the Second number: ");
+                Double b = sc.nextDouble();
+                calcObj.add(a, b);
+            } else if (choice == 2) {
+                System.out.print("Enter the First number: ");
+                Double a = sc.nextDouble();
+                System.out.print("Enter the Second number: ");
+                Double b = sc.nextDouble();
+                calcObj.sub(a, b);
+
+            } else if (choice == 3) {
+                System.out.print("Enter the First number: ");
+                Double a = sc.nextDouble();
+                System.out.print("Enter the Second number: ");
+                Double b = sc.nextDouble();
+                calcObj.mul(a, b);
+
+            } else {
+                System.out.print("Enter the Dividend: ");
+                Double a = sc.nextDouble();
+                System.out.print("Enter the Divisor: ");
+                Double b = sc.nextDouble();
+                calcObj.div(a, b);
+            }
+        }
     }
 }
-
-/*
-public class Calculator {
-	
-    private static Logger logger;
-
-	public Calculator() {
-        logger  = LogManager.getLogger(Calculator.class);
-	}
-	
-	public static void menu() {
-        System.out.println("Scientific Calculator");
-        System.out.println("--------------------------");
-        System.out.println("1. Square root");
-        System.out.println("2. Factorial");
-        System.out.println("3. Natural logarithm (base е)");
-        System.out.println("4. Power");
-        System.out.println("0. Exit");
-        System.out.print("Enter your choice: ");		
-	}
-
-	public static void main(String[] args) {
-		Calculator cal = new Calculator();
-		
-        Scanner sc = new Scanner(System.in);                
-        sc.nextLine();
-
-        int choice;
-
-        do {
-        	Calculator.menu();
-
-        	choice = sc.nextInt();
-        	
-        	double num1, num2, ans;
-
-            switch(choice) {
-                case 1:
-                    System.out.print("Enter number: ");
-                    num1 = sc.nextDouble();
-                    ans = cal.mySqrt(num1);
-                    if(ans == -1) {
-                        System.out.println("Invalid input");
-                    }
-                    else {
-                    	System.out.println("Square root of " + num1 + " is " + ans);
-                    }
-                    break;
-
-                case 2:
-                    System.out.print("Enter number: ");
-                    num1 = sc.nextDouble();
-                    ans = cal.myFactorial(num1);
-                    if(ans == -1) {
-                        System.out.println("Invalid input");
-                    }
-                    else {
-                    	System.out.println("Factorial of " + num1 + " is " + ans);
-                    }
-                    break;
-
-                case 3:
-                    System.out.print("Enter number: ");
-                    num1 = sc.nextDouble();
-                    ans = cal.myLog(num1);
-                    if(ans == -1) {
-                        System.out.println("Invalid input");
-                    }
-                    else {
-                        System.out.println("Natural logarithm (base е) of " + num1 + " is " + ans);
-                    }
-                    break;
-
-                case 4:
-                    System.out.print("Enter first number: ");
-                    num1 = sc.nextDouble();
-
-                    System.out.print("Enter second number: ");
-                    num2 = sc.nextDouble();
-                                        
-                    ans = cal.myPow(num1, num2);
-                    System.out.println("Power of " + num1 + " to " + num2 + " is " + ans);
-                    break;
-
-                case 0:
-                    System.out.println("Bye...");
-                    break;
-
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
-
-            System.out.println();
-        } 
-        while (choice != 0);
-
-        sc.close();
-
-	}
-
-	public double mySqrt(double num) {
-        if(num < 0) {
-            logger.error("[SQUARE_ROOT] - " + num + " - [RESULT] - " + "null");
-            return -1;
-        }
-
-        double ans = Math.sqrt(num);
-
-        logger.info("[SQUARE_ROOT] - " + num + " - [RESULT] - " + ans);
-        return ans;
-	}
-
-	public double myFactorial(double num) {
-        if(num < 0) {
-            logger.error("[FACTORIAL] - " + num + " - [RESULT] - " + "null");
-            return -1;
-        }
-        
-        double ans = 1;
-        for(int i = 1; i <= num; i++) {
-            ans *= i;
-        }
-
-        logger.info("[FACTORIAL] - " + num + " - [RESULT] - " + ans);
-
-        return ans;
-	}
-
-	public double myLog(double num) {
-        if(num <= 0) {
-            logger.error("[LOGARITHM] - " + num + " - [RESULT] - " + "null");
-            return -1;
-        }
-
-        double ans = Math.log(num);
-
-        logger.info("[LOGARITHM] - " + num + " - [RESULT] - " + ans);
-
-        return ans;
-	}
-
-	public double myPow(double num1, double num2) {
-        double ans = Math.pow(num1, num2);
-
-        logger.info("[POWER] - " + num1 + " " + num2 + " - [RESULT] - " + ans);
-
-        return ans;
-	}
-
-}
-*/
