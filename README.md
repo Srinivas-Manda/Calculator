@@ -1,1 +1,1 @@
-laand
+CLI-based menu driven application Calculator Project made for SPE Mini project.
